@@ -21,7 +21,8 @@ public class ProdutoTest {
 	public void inicializa() {
 		livro = new Produto("Introdução ao Teste de Software", 100.00);
 	}
-	
+
+	@DisplayName("Teste criação de produto")
 	@Test
 	public void testCriaProduto() {
 		Assertions.assertAll("livro",
@@ -29,15 +30,17 @@ public class ProdutoTest {
 				() -> assertTrue(100.00 == livro.getPreco())						
 				);
 	}
-	
+
+	@DisplayName("Teste produtos iguais")
 	@Test
 	public void testProdutosIguais() {
 		Produto livro2 = new Produto("Introdução ao Teste de Software", 90.00);
-		
+
 		assertNotSame(livro, livro2);
-		
+		assertTrue(livro.equals(livro2));
 	}
-	
+
+	@DisplayName("Teste produto")
 	@Test
 	public void assertionComHamcrestMatcher() {
 		assertThat(livro.getPreco(), equalTo(100.00));
